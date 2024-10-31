@@ -1,13 +1,31 @@
-package ifrn.pi.eventos.controllers;
 
+	package ifrn.pi.eventos.controllers;
+
+
+	import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Controller;
+	import org.springframework.web.bind.annotation.PostMapping;
 	import org.springframework.web.bind.annotation.RequestMapping;
+	import ifrn.pi.eventos.models.Evento;
+	import ifrn.pi.eventos.repositories.EventoRepository;
 
 	@Controller
 	public class EventosController {
-		@RequestMapping("/eventos/form")
-		 public String form() {
-			 return "formEvento";
-		 }
+		
+		@Autowired
+		private EventoRepository er; 
+
+		@RequestMapping("/aulaspi02/form")
+		public String form() {
+			return "formEvento";
+		}
+
+		@PostMapping("/aulaspi02")
+		public String adicionar(Evento evento) {
+			
+			System.out.println(evento);
+			er.save(evento);
+			return "Eventoadicionado";
+		}
 	}
 
