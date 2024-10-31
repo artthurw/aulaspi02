@@ -10,5 +10,4 @@ public class IndexController {
 		System.out.println("Chamou o metodo index");
 		return "home";
 	}
-
 }
